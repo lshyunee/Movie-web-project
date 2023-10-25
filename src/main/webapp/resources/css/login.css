@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.wrapper{
+	margin-top:5%;
+}
+
+.form-control1 {
+  width: 74%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.login-panel {
+  margin-top: 25%;
+}
+
+.panel1 {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+    box-sizing: border-box;
+}
+
+.panel-heading1 {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-title1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+}
+
+.panel-body1 {
+    padding: 15px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+
+.form-group1 {
+    margin-bottom: 15px;
+}
+
+.checkbox1, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkbox1 label, .radio1 label {
+    min-height: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.panel1 .slidedown .glyphicon,
+.chat .glyphicon {
+  margin-right: 5px;
+}
+
+.panel-default1 {
+	border-color: #ddd
+}
+
+.panel-default1>.panel-heading1 {
+	color: #333;
+	background-color: #f5f5f5;
+	border-color: #ddd
+}
+
+.panel-default1>.panel-heading1+.panel-collapse1>.panel-body1 {
+	border-top-color: #ddd
+}
+
+.panel-default1>.panel-heading1 .badge1 {
+	color: #f5f5f5;
+	background-color: #333
+}
+
+.panel-default1>.panel-footer1+.panel-collapse1>.panel-body1 {
+	border-bottom-color: #ddd
+}
+
+.row1 {
+	margin-right: -15px;
+	margin-left: -15px
+}
+
+.panel-body1 {
+	padding: 15px
+}
+
+.col-md-41 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-md-offset-41 {
+		margin-left: 33.33333333%;
+		margin-right: 33.33333333%
+	}

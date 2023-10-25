@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hrd.mapper.MemberMapper">
+	<resultMap type="com.hrd.domain.MemberVO" id="memberMap">
+		<id property="userid" column="userid" />
+		<result property="userid" column="userid" />
+		<result property="userpw" column="userpw" />
+		<result property="userName" column="username" />
+		<result property="regDate" column="regdate" />
+		<result property="updateDate" column="updatedate" />
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	<resultMap type="com.hrd.domain.AuthVO" id="authMap">
+		<result property="userid" column="userid" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+	<select id="read" resultMap="memberMap">
+		select mem.userid, userpw, username,
+		enabled, regdate, updatedate, auth
+		from tbl_member mem LEFT OUTER JOIN
+		tbl_member_auth auth on mem.userid =
+		auth.userid
+		where mem.userid =
+		#{userid}
+	</select>
+	<insert id="joinMember">
+		insert into tbl_member (userid, userpw, userName)
+		values (#{userid}, #{userpw}, #{userName})
+	</insert>
+	<insert id="checkAuthority">
+		insert into tbl_member_auth (userid, auth) values
+		(#{userid}, #{auth})
+	</insert>
+	<select id="idCheck" resultType="int">
+		select count(*) from tbl_member
+		where userid =#{userid}
+	</select>
+	<select id="pwCheck" resultType="int">
+		select count(*) from tbl_member
+		where userpw =#{userpw}
+	</select>
+	<select id="getList" resultType="com.hrd.domain.MemberVO">
+		select * from tbl_member order
+		by regDate
+	</select>
+	<delete id="deleteMember">
+		delete tbl_member where userid=#{userid}
+	</delete>
+	<delete id="deleteAuth">
+		delete tbl_member_auth where userid=#{userid}
+	</delete>
+	<update id="updateMember">
+		update tbl_member set userName=#{userName}, updatedate=sysdate, userpw=#{userpw} where userid=#{userid}
+	</update>
+
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='I'.toString()">
+							userid like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='N'.toString()">
+							username like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="com.hrd.domain.MemberVO">
+		<![CDATA[ 
+		select userid, username, regDate
+		from( select rownum rn, M.* from ( select tbl_member.* from tbl_member order by regDate desc) M where ]]>
+		<include refid="criteria" />
+		<![CDATA[ rownum<=#{pageNum}*#{amount} ) where rn>(#{pageNum}-1)*#{amount} ]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
+		tbl_member
+	</select>
+</mapper>

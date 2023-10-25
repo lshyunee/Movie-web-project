@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hrd.mapper.MovieMapper">
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach collection="typeArr" item="type">
+				<trim prefix="OR">
+					<choose>
+						<when test="type=='T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='D'.toString()">
+							director like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='R'.toString()">
+							rating like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='G'.toString()">
+							genre like '%'||#{keyword}||'%'
+						</when>
+						<when test="type=='W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getListWithPaging"
+		resultType="com.hrd.domain.MovieVO">
+		<![CDATA[ 
+		select rn, mno, title, genre, director, content, regdate, rating, writer 
+		from( select rownum rn, M.* from ( select tbl_movie.* from tbl_movie order by regdate desc) M where ]]>
+		<include refid="criteria" />
+		<![CDATA[ rownum<=#{pageNum}*#{amount} ) where rn>(#{pageNum}-1)*#{amount} ]]>
+	</select>
+	<select id="getList" resultType="com.hrd.domain.MovieVO">
+		select * from tbl_movie order by
+		mno
+	</select>
+	<select id="info" resultType="com.hrd.domain.MovieVO">
+		select * from tbl_movie where
+		mno=#{mno}
+	</select>
+	<insert id="insert"> insert into tbl_movie (mno, title, genre, director,
+		content, regdate, rating, writer) values (seq_movie.nextval, #{title},
+		#{genre}, #{director}, #{content}, #{regdate}, #{rating}, #{writer})
+	</insert>
+	<insert id="insertSelectKey">
+		<selectKey keyProperty="mno" order="BEFORE"
+			resultType="long"> select seq_movie.nextval from dual </selectKey>
+		insert into tbl_movie (mno, title, genre, director, content, regdate,
+		rating, writer) values (#{mno}, #{title}, #{genre}, #{director},
+		#{content},
+		#{regdate}, #{rating}, #{writer})
+	</insert>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from
+		tbl_movie where
+		<include refid="criteria"></include>
+		mno>0
+	</select>
+	<delete id="delete">
+		delete tbl_movie where mno=#{mno}
+	</delete>
+	<delete id="delete2">
+		delete tbl_attach where mno=#{mno}
+	</delete>
+	<update id="update">
+		update tbl_movie set
+		title=#{title},genre=#{genre},content=#{content},regdate=#{regdate},director=#{director},
+		rating=#{rating}, writer=#{writer} where mno=#{mno}
+	</update>
+</mapper>
