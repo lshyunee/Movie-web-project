@@ -107,8 +107,14 @@
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="move" href="<c:out value='${list.mno}'/>"><button
+								<sec:authorize access="isAuthenticated()">
+									<a class="move" href="<c:out value='${list.mno}'/>"><button
 										class="btn btn-outline-dark mt-auto">상세보기</button></a>
+										</sec:authorize>
+										<sec:authorize access="isAnonymous()">
+									<a class="move2" href="<c:out value='${list.mno}'/>"><button
+										class="btn btn-outline-dark mt-auto">상세보기</button></a>
+										</sec:authorize>
 							</div>
 						</div>
 					</div>
@@ -158,6 +164,15 @@
 					actionForm.append("<input type='hidden' name='mno' value='"
 							+ $(this).attr("href") + "'>");
 					actionForm.attr("action", "/movie/info");
+					actionForm.submit();
+				});
+		$('.move2').on(
+				"click",
+				function(e) {
+					e.preventDefault();
+					actionForm.append("<input type='hidden' name='mno' value='"
+							+ $(this).attr("href") + "'>");
+					actionForm.attr("action", "/movie/infoAnony");
 					actionForm.submit();
 				});
 

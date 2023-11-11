@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -89,6 +92,7 @@ public class MovieController {
 		return "/movie/register";
 	}
 	
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping({ "/info", "/modify" })
 	public void info(@RequestParam("mno") Long mno, @ModelAttribute("cri") Criteria cri, Principal principal, Model model) throws Exception{
 		log.info("=========");
@@ -103,6 +107,12 @@ public class MovieController {
 		System.out.println(heart);
 		
 		model.addAttribute("heart", heart);
+	}
+	
+	@GetMapping({ "/infoAnony"})
+	public void infoAnony(@RequestParam("mno") Long mno, @ModelAttribute("cri") Criteria cri, Principal principal, Model model) throws Exception{
+		log.info("=========");
+		model.addAttribute("infoA", service.info(mno));
 	}
 
 	@PreAuthorize("( principal.username == #movie.writer ) or hasRole('ROLE_ADMIN')")
@@ -176,5 +186,18 @@ public class MovieController {
         return heart;
 
     }
+	
 
+	@PostMapping("/likeListRemove")
+	public String likeList(@RequestParam("mno") Long mno, Principal principal, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr)throws Exception {
+		
+		String userid = principal.getName();
+		if (likeservice.removeLike(mno, userid) == 1) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		log.info("remove:" + mno + userid);
+
+		return "redirect:/movie/likeList?userid=" + userid + cri.getListLink();
+	}
+	
 }

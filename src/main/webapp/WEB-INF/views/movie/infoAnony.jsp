@@ -41,65 +41,52 @@
 			</div>
 			<div class="col-md-5">
 				<div class="pre">
-					<a href="http://www.youtube.com/results?search_query=${info.title}"
+					<a href="http://www.youtube.com/results?search_query=${infoA.title}"
 						target="_blank"><button class="btn btn-default">
 							<img src="/resources/image/Golink.jpg" alt="" width="40"
 								height="40">예고편 보러가기
 						</button></a>
-				<sec:authorize access="isAuthenticated()">
-					<a class="btn pull-right heart"> <img id="heart" src="">
-					</a>
-				</sec:authorize>
 				</div>
 				<br>
-				<div class="small mb-1">${info.genre}</div>
-				<h1 class="display-5 fw-bolder mt-4">${info.title}</h1>
+				<div class="small mb-1">${infoA.genre}</div>
+				<h1 class="display-5 fw-bolder mt-4">${infoA.title}</h1>
 				<div class="fs-5 mb-5">
 					<div class="d-flex  small text-warning mb-2">
-						<c:forEach var="plus" begin="1" end="${info.rating}" step="1">
+						<c:forEach var="plus" begin="1" end="${infoA.rating}" step="1">
 							<img src="/resources/image/cruncky.png" width="30px">&nbsp;
 									</c:forEach>
-						<c:forEach var="minus" begin="${info.rating}" end="4" step="1">
+						<c:forEach var="minus" begin="${infoA.rating}" end="4" step="1">
 							<img src="/resources/image/dark.png" width="30px"> &nbsp;
 									</c:forEach>
 					</div>
 				</div>
-				<p class="lead">${info.content}</p>
+				<p class="lead">${infoA.content}</p>
 				<div class="d-flex">
 					<p class="me-5 mt-5">
-						개봉 날짜: <b>${info.regdate}</b>
+						개봉 날짜: <b>${infoA.regdate}</b>
 					</p>
 					<br>
 					<p class="mt-5">
-						<b>감독: ${info.director}</b>
+						<b>감독: ${infoA.director}</b>
 					</p>
 				</div>
 				<div class="d-flex">
 					<p class="me-5 mt-5">
-						작성자: <b>${info.writer}</b>
+						작성자: <b>${infoA.writer}</b>
 					</p>
 					<p class="me-5 mt-5">
 						작성 날짜: <b><fmt:formatDate pattern='yyyy-MM-dd'
-								value='${info.uploaddate}' /></b>
+								value='${infoA.uploaddate}' /></b>
 					</p>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-6">
 			<div class="mb-5 mb-md-0 my-5">
-				<sec:authentication property="principal" var="pinfo" />
-				<sec:authorize access="isAuthenticated()">
-					<c:if test="${pinfo.username eq info.writer}">
-						<button class="btn btn-primary modBtn">수정</button>
-					</c:if>
-				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button class="btn btn-primary modBtn">수정</button>
-				</sec:authorize>
 				<button class="btn btn-primary listBtn">목록</button>
 			</div>
 			<form id="actionForm" action="/movie/list" method="get">
-				<input type="hidden" name="mno" value="${info.mno}"> <input
+				<input type="hidden" name="mno" value="${infoA.mno}"> <input
 					type="hidden" name="pageNum" value="${cri.pageNum}"> <input
 					type="hidden" name="amount" value="${cri.amount}"> <input
 					type="hidden" name="keyword" value="${cri.keyword}"> <input
@@ -114,10 +101,6 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<i class="fa fa-comments fa-fw"></i> #댓글
-						<sec:authorize access="isAuthenticated()">
-							<button id='addReplyBtn'
-								class='btn btn-primary btn-xs pull-right'>댓글 작성</button>
-						</sec:authorize>
 					</div>
 					<!-- /.panel-heading -->
 					<div class="panel-body">
@@ -134,87 +117,12 @@
 	</div>
 </section>
 
-<!-- Modal -->
-<div class="modal" id="myModal" tabindex="-1" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">REPLY MODAL</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<label>Reply</label> <input class="form-control" name="reply"
-						value="New Reply!!">
-				</div>
-				<div class="form-group">
-					<label>Replyer</label> <input class="form-control" name="replyer"
-						value="replyer">
-				</div>
-				<div class="form-group">
-					<label>Reply Date</label> <input class="form-control"
-						name="replyDate" value="2022-11-24">
-				</div>
-			</div>
-			<div class="modal-footer">
-				<!-- 
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-					<button id="modalModBtn" type="button" class="btn btn-warning modalModBtn"
-						style="border-radius: 15px;">Modify</button>
-					<button id="modalRemoveBtn" type="button" class="btn btn-danger modalRemoveBtn">Remove</button>
-				</sec:authorize>
-			 -->
-				<button id="modalModBtn" type="button" class="btn btn-warning"
-					style="border-radius: 15px;">Modify</button>
-				<button id="modalRemoveBtn" type="button" class="btn btn-danger">Remove</button>
-				<button id="modalRegisterBtn" type="button" class="btn btn-primary">Register</button>
-				<button id="modalCloseBtn" type="button" class="btn btn-default"
-					style="border-radius: 15px;">Close</button>
-			</div>
-		</div>
-		<!-- /.modal-content -->
-	</div>
-	<!-- /.modal-dialog -->
-</div>
-
 <script src="https://code.jquery.com/jquery-3.4.1.js"
 	type="text/javascript"></script>
 <script type="text/javascript" src="/resources/js/reply.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var heartval = '${heart}';
-        if(heartval>0) {
-            console.log(heartval);
-            $("#heart").prop("src", "/resources/image/heart2.png");
-            $(".heart").prop('name',heartval)
-        }
-        else {
-            console.log(heartval);
-            $("#heart").prop("src", "/resources/image/heart.png");
-            $(".heart").prop('name',heartval)
-        }
-        $(".heart").on("click", function () {
-            var that = $(".heart");
-            var sendData = {'userid' : '<sec:authentication property="principal.username"/>','heart':'${heart}','mno' : '${info.mno}'};
-            $.ajax({
-                url :'/movie/heart',
-                type :'POST',
-                data : sendData,
-                success : function(data){
-                    that.prop('name',data);
-                    if(data==1) {
-                        $('#heart').prop("src","/resources/image/heart2.png");
-                    }
-                    else{
-                        $('#heart').prop("src","/resources/image/heart.png");
-                    }
-                }
-            });
-        });
-    });
-</script>
 <script>
 	$(function() {
-		var mno = '${info.mno}';
+		var mno = '${infoA.mno}';
 		$.getJSON("/movie/getAttach",{mno : mno},function(arr) {
 			console.log(arr);
 			var str = "";
@@ -231,7 +139,7 @@
 	console.log("==========");
 	console.log("JS TEST");
 
-	var mnoValue = '${info.mno}';
+	var mnoValue = '${infoA.mno}';
 
 	replyService.getList({
 		mno : mnoValue,
@@ -245,7 +153,7 @@
 
 <script>
 	$(function() {
-		var mnoValue = '${info.mno}';
+		var mnoValue = '${infoA.mno}';
 		var replyUL = $(".chat");
 		showList(1);
 		function showList(page) {replyService.getList({mno : mnoValue, page : page || 1},function(replyCnt, list) {
@@ -391,6 +299,7 @@
 					modalModBtn.show();
 					modalRemoveBtn.show();
 				} else if (replyer == 'admin'){
+					modalModBtn.show();
 					modalRemoveBtn.show();
 				}
 			});
@@ -457,52 +366,7 @@
 		actionForm.find('input[name="mno"]').remove();
 		actionForm.submit();
 	});
-	$(".modBtn").click(function(e) {
-		e.preventDefault();
-		actionForm.attr("action", "/movie/modify");
-		actionForm.submit();
-	});
 	
-	/*
-	$(".addLike").click(function(e) {
-		e.preventDefault();
-		actionForm.attr("action", "/movie/likeList");
-		actionForm.attr("method", "POST");
-		actionForm.submit();
-	});
-	
-	$("form .btn").on("click", function(e) {
-		e.preventDefault();
-		var operation = $(this).data("oper");
-		console.log(operation);
-		if (operation === 'remove') {
-			actionForm.attr({
-				"action" : "/movie/heart",
-				"method" : "post"
-			});
-		}});
-	
-	var csrfHeaderName = "${_csrf.headerName}";
-	var csrfTokenValue = "${_csrf.token}";
-	
-	$(function() {
-		var formObj = $("form");
-		$("form .addLike").on("click", function(e) {
-			e.preventDefault();
-			var operation = $(this).data("oper");
-			console.log(operation);
-			if (operation === 'remove') {
-				formObj.attr({
-					"action" : "/movie/like",
-					"method" : "post"
-				});
-			} 
-
-			formObj.submit();
-		});
-	
-	});
-	*/
 </script>
 
 <%@ include file="../includes/footer.jsp"%>

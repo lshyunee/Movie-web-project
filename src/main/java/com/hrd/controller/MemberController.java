@@ -123,43 +123,7 @@ public class MemberController {
 		return "redirect:/member/mypage";
 	}
 
-	/*
-	@GetMapping("/pwCheck")
-	public void loginInput(String error, String logout,  Model model) {
-		SecurityContextHolder.clearContext();
-		log.info("error: " + error);
-		log.info("logout: " + logout);
-		
-		if(error != null) {
-			model.addAttribute("error", "Login Error Check Your Account");
-		}
-		if(logout != null) {
-			model.addAttribute("logout", "Logout!!");
-		}
-	}
-	*/
-	
-	
 
-	/*
-	@PostMapping("/pwCheck")
-    public String pwCheck(@RequestParam("inputText") String inputText, RedirectAttributes rttr) {
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        log.info("pwCheck()");
-        int result = service.pwCheck(inputText);
-        
-        
-        if(encoder.matches(inputText, userpw)) {
-            log.info("pw 재확인 완료..");
-            return "redirect:/member/mypage";
-        }
-        else {
-            rttr.addFlashAttribute("msg", "비밀번호를 다시 확인해 주세요.");
-            return "redirect:/member/mypage";
-        }
-    }
-    */
-	
 	// 아이디 중복 검사
 	@PostMapping("/idCheck")
 	@ResponseBody
