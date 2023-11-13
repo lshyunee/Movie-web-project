@@ -73,4 +73,4 @@ Movie Information Site Project
 
 |검색 • 목록(페이징처리 시 목록으로 돌아가기)  -> 비회원|
 |:---:|
-|![기본 기능]([https://ibb.co/GPYxBL5](https://github.com/lshyunee/Movie-web-project/assets/147044110/eba082ac-70fe-4b80-8a13-8ba5f6fbee08)https://github.com/lshyunee/Movie-web-project/assets/147044110/eba082ac-70fe-4b80-8a13-8ba5f6fbee08)|
+|![기본 기능](https://github.com/lshyunee/Movie-web-project/assets/147044110/eba082ac-70fe-4b80-8a13-8ba5f6fbee08)|
