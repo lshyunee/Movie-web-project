@@ -44,7 +44,6 @@ Movie Information Site Project
 |:---:|
 |![내정보수정](https://github.com/lshyunee/Movie-web-project/assets/147044110/bb5e2e38-cb67-4fe3-a4a5-c06961ef98fe)|
 |수정한 비밀번호 로그인 • 회원 탈퇴|
-|:---:|
 |![회원탈퇴](https://github.com/lshyunee/Movie-web-project/assets/147044110/f97bcee2-d22d-4d63-9ff6-c8b0d9263cdd)|
 
 
@@ -52,7 +51,6 @@ Movie Information Site Project
 |:---:|
 |![관리자회원목록](https://github.com/lshyunee/Movie-web-project/assets/147044110/df6dfb62-765c-4ace-a9b2-30822db15d38)|
 |관리자 회원 댓글 삭제 • 회원 글 수정|
-|:---:|
 |![관리자](https://github.com/lshyunee/Movie-web-project/assets/147044110/42696efe-a6d4-43ef-bdc2-debb79587e82)|
 
 
@@ -65,7 +63,6 @@ Movie Information Site Project
 |:---:|
 |![글등록](https://github.com/lshyunee/Movie-web-project/assets/147044110/e4fffb6a-6afd-4db8-83c8-5f3b3443d59a)|
 |글 수정 • 삭제|
-|:---:|
 |![글수정삭제](https://github.com/lshyunee/Movie-web-project/assets/147044110/faf013c7-613c-48a3-8bbe-c6ebe26d4e3e)|
 
 
@@ -76,4 +73,4 @@ Movie Information Site Project
 
 |검색 • 목록(페이징처리 시 목록으로 돌아가기)  -> 비회원|
 |:---:|
-|![기본 기능](https://ibb.co/GPYxBL5)|
+|![기본 기능]([https://ibb.co/GPYxBL5](https://github.com/lshyunee/Movie-web-project/assets/147044110/eba082ac-70fe-4b80-8a13-8ba5f6fbee08)https://github.com/lshyunee/Movie-web-project/assets/147044110/eba082ac-70fe-4b80-8a13-8ba5f6fbee08)|
