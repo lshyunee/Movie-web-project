@@ -6,6 +6,7 @@ Movie Information Site Project
 </p>
 <h1 align="middle">Movie Crunky</h1>
 <h3 align="middle">영화 정보 제공 웹사이트</h3>
+<h2 align="middle">프로젝트 진행 기간 (2022.11.18 ~ 2022.12.06)</h2>
 <br />
 
 ## 🎬 Introduce
