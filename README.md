@@ -37,28 +37,43 @@ Movie Information Site Project
 ## 🖱️ Demo (gif)
 |회원가입 • 로그인 • 로그아웃|
 |:---:|
-|![회원가입](https://github.com/lshyunee/Movie-web-project/assets/147044110/54cf31ed-d602-454c-a5c7-5a80512e3c86)|
+|![회원가입](https://github.com/lshyunee/Movie-web-project/assets/147044110/3cb669f9-daa1-4a17-a616-5a173324fa3c)|
 
-|내 정보 수정 • 회원탈퇴|
-|:---:|
-|![내정보수정•회원탈퇴](https://github.com/lshyunee/Movie-web-project/assets/147044110/4625a688-9481-4478-a05b-4751bf038494)|
 
-|관리자|
+|내 정보 수정|
 |:---:|
-|![관리자](https://github.com/lshyunee/Movie-web-project/assets/147044110/e7b1fea2-d908-4e66-88f2-e489fd36eecc)|
+|![내정보수정](https://github.com/lshyunee/Movie-web-project/assets/147044110/bb5e2e38-cb67-4fe3-a4a5-c06961ef98fe)|
+|수정한 비밀번호 로그인 • 회원 탈퇴|
+|:---:|
+|![회원탈퇴](https://github.com/lshyunee/Movie-web-project/assets/147044110/f97bcee2-d22d-4d63-9ff6-c8b0d9263cdd)|
+
+
+|관리자 회원목록 수정 • 삭제|
+|:---:|
+|![관리자회원목록](https://github.com/lshyunee/Movie-web-project/assets/147044110/df6dfb62-765c-4ace-a9b2-30822db15d38)|
+|관리자 회원 댓글 삭제 • 회원 글 수정|
+|:---:|
+|![관리자](https://github.com/lshyunee/Movie-web-project/assets/147044110/42696efe-a6d4-43ef-bdc2-debb79587e82)|
+
 
 |찜하기|
 |:---:|
-|![찜하기](https://github.com/lshyunee/Movie-web-project/assets/147044110/5adc1bc3-e466-48f6-9f7c-1aab3c84b4bf)|
+|![찜하기](https://github.com/lshyunee/Movie-web-project/assets/147044110/5a04e5a8-aba2-4a39-8f75-2959af9a64d5)|
 
-|글 등록 • 수정 • 삭제 • 내가 쓴 글|
+
+|글 등록 • 내가 쓴 글|
 |:---:|
-|![글등록](https://github.com/lshyunee/Movie-web-project/assets/147044110/7bf17203-a90c-4668-85bc-b99917d8f159)|
+|![글등록](https://github.com/lshyunee/Movie-web-project/assets/147044110/e4fffb6a-6afd-4db8-83c8-5f3b3443d59a)|
+|글 수정 • 삭제|
+|:---:|
+|![글수정삭제](https://github.com/lshyunee/Movie-web-project/assets/147044110/faf013c7-613c-48a3-8bbe-c6ebe26d4e3e)|
+
 
 |댓글 기능|
 |:---:|
-|![댓글기능](https://github.com/lshyunee/Movie-web-project/assets/147044110/266d8136-97e9-4dac-be5a-04abdaafd767)|
+|![댓글기능](https://github.com/lshyunee/Movie-web-project/assets/147044110/fdcd0bd3-411e-46a1-84df-29b747e0e95d)|
+
 
 |검색 • 목록(페이징처리 시 목록으로 돌아가기)  -> 비회원|
 |:---:|
-|![기본 기능](https://github.com/lshyunee/Movie-web-project/assets/147044110/7e907eee-00d7-4669-8a80-8d98ef31c62a)|
+|![기본 기능](https://ibb.co/GPYxBL5)|
